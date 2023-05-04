@@ -27,7 +27,7 @@
 <meta property="og:image" content="https://github.com/Ccruch/Ccrush.github.io/2023/05/04/hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/2.png">
 <meta property="og:image" content="https://github.com/Ccruch/Ccrush.github.io/2023/05/04/hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/3.png">
 <meta property="article:published_time" content="2023-05-04T10:59:38.000Z">
-<meta property="article:modified_time" content="2023-05-04T12:03:14.040Z">
+<meta property="article:modified_time" content="2023-05-04T12:14:46.214Z">
 <meta property="article:author" content="Crush">
 <meta property="article:tag" content="haxo">
 <meta name="twitter:card" content="summary_large_image">
@@ -224,7 +224,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          725 字
+          1k 字
         
       </span>
     
@@ -235,7 +235,7 @@
         
         
         
-          7 分钟
+          9 分钟
         
       </span>
     
@@ -311,7 +311,14 @@
 <div align=center> <img src="3.png" srcset="/Ccrush.github.io/img/loading.gif" lazyload width = 65%></div></blockquote>
 </li>
 </ul>
-<h3 id=""><a href="#" class="headerlink" title=""></a></h3><h3 id="Pages不渲染-hexo-s之后可以看到是成功时"><a href="#Pages不渲染-hexo-s之后可以看到是成功时" class="headerlink" title="Pages不渲染(hexo s之后可以看到是成功时)"></a>Pages不渲染(hexo s之后可以看到是成功时)</h3><p>参考：</p>
+<h3 id=""><a href="#" class="headerlink" title=""></a></h3><h3 id="便捷指令"><a href="#便捷指令" class="headerlink" title="便捷指令"></a>便捷指令</h3><blockquote>
+<p>hexo cl = hexo clean</p>
+<p>hexo g = hexo generate</p>
+<p>hexo s = hexo server</p>
+<p>hexo d = hexo deploy</p>
+<p>hexo g –d = hexo generate;hexo deploy</p>
+</blockquote>
+<h3 id="Pages不渲染-hexo-s之后可以看到是成功时"><a href="#Pages不渲染-hexo-s之后可以看到是成功时" class="headerlink" title="Pages不渲染(hexo s之后可以看到是成功时)"></a>Pages不渲染(hexo s之后可以看到是成功时)</h3><p>参考：</p>
 <blockquote>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/StarryaSky/article/details/83378011">hexo+Github搭建博客，能访问但无法加载css文件_StarryaSky的博客-CSDN博客</a></p>
 <p>注意：_config.yml中的url要改成github的仓库地址，加一个root字段，具体写什么按参考链接里面的做法找，应该是主页的仓库名称，也就是/username.github.io(注意前面有个斜杆/)</p>
@@ -324,6 +331,10 @@
 <blockquote>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/liuhp123/article/details/120010863">Hexo博客插入本地图片、Markdown图片设置图片位置和大小_hexo图片大小_乐悠刘海儿的博客-CSDN博客</a></p>
 <p>代码放在一行？我放在一行才行。</p>
+</blockquote>
+<h3 id="-3"><a href="#-3" class="headerlink" title=""></a></h3><h3 id="更新时没变化"><a href="#更新时没变化" class="headerlink" title="更新时没变化"></a>更新时没变化</h3><blockquote>
+<p>多试几次，如果hexo d命令之后没有出现“e8666d2..aab2c9d  HEAD -&gt; master”这样的字眼，说明没有push到github上面，随便修改一下文件，它检测有变化会push；</p>
+<p>或者去仓库的Actions看有没有新的workflow(一般将近一分钟才部署成功)，如果没有新的workflow，不管怎么刷新都不会有变化的。</p>
 </blockquote>
 
                 
