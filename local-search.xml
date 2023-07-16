@@ -4,6 +4,57 @@
   
   
   <entry>
+    <title>Windows修改</title>
+    <link href="/cc/2023/07/16/Windows%E4%BF%AE%E6%94%B9/"/>
+    <url>/cc/2023/07/16/Windows%E4%BF%AE%E6%94%B9/</url>
+    
+    <content type="html"><![CDATA[<h3 id="Win11文件夹中右键不方便-gt-修改为旧版本"><a href="#Win11文件夹中右键不方便-gt-修改为旧版本" class="headerlink" title="Win11文件夹中右键不方便 -&gt; 修改为旧版本"></a>Win11文件夹中右键不方便 -&gt; 修改为旧版本</h3><p>升级Win11之后，在文件夹中右键选择操作变成这样了，之前习惯的一些操作需要多点击一次“选择更多选项”才可以：</p><div align=center> <img src="1.png" width = 65%></div><p>搜了一下，在cmd用命令可以换成旧版本：</p><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">reg</span> add HKCU\Software\Classes\CLSID\&#123;<span class="hljs-number">86</span>ca1aa0-<span class="hljs-number">34</span>aa-<span class="hljs-number">4</span>e8b-a509-<span class="hljs-number">50</span>c905bae2a2&#125;\InprocServer32 /ve /d <span class="hljs-string">&quot;&quot;</span> /f<br></code></pre></td></tr></table></figure><p>提示操作成功完成后，就变成旧版本了:</p><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">align</span>=<span class="hljs-string">center</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;2.png&quot;</span> <span class="hljs-attr">width</span> = <span class="hljs-string">65%</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br></code></pre></td></tr></table></figure><p>另外记录一下改为Win11风格的命令：</p><figure class="highlight subunit"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs subunit">reg delete &quot;HKCU\Software\Classes\CLSID\&#123;86ca1aa0<span class="hljs-string">-34</span>aa<span class="hljs-string">-4</span>e8b-a509<span class="hljs-string">-50</span>c905bae2a2&#125;&quot; /f<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>Windows</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>LeetCode记录</title>
+    <link href="/cc/2023/07/16/LeetCode%E8%AE%B0%E5%BD%95/"/>
+    <url>/cc/2023/07/16/LeetCode%E8%AE%B0%E5%BD%95/</url>
+    
+    <content type="html"><![CDATA[<h1 id="1-两数之和"><a href="#1-两数之和" class="headerlink" title="1.两数之和"></a>1.两数之和</h1><h2 id="两次遍历"><a href="#两次遍历" class="headerlink" title="两次遍历"></a>两次遍历</h2><p>遍历所有可能的一对数字，判断和是否等于target，复杂度是O(n^2)</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>(<span class="hljs-title class_ inherited__">object</span>):<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">twoSum</span>(<span class="hljs-params">self, nums, target</span>):<br>        <span class="hljs-string">&quot;&quot;&quot;</span><br><span class="hljs-string">        :type nums: List[int]</span><br><span class="hljs-string">        :type target: int</span><br><span class="hljs-string">        :rtype: List[int]</span><br><span class="hljs-string">        &quot;&quot;&quot;</span><br>        leng = <span class="hljs-built_in">len</span>(nums)<br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(leng - <span class="hljs-number">1</span>):<br>            <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(i + <span class="hljs-number">1</span>, leng):<br>                <span class="hljs-keyword">if</span> nums[i] + nums[j] == target:<br>                    <span class="hljs-keyword">return</span>([i,j])<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">None</span><br></code></pre></td></tr></table></figure><h2 id="哈希，利用字典"><a href="#哈希，利用字典" class="headerlink" title="哈希，利用字典"></a>哈希，利用字典</h2><p>遍历数组中的每个数字，计算和target的差值；</p><p>如果差值在字典中，说明找到要求的两数，返回；</p><p>否则，以当前数字为key，索引为value，添加到字典。</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>(<span class="hljs-title class_ inherited__">object</span>):<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">twoSum</span>(<span class="hljs-params">self, nums, target</span>):<br>        <span class="hljs-string">&quot;&quot;&quot;</span><br><span class="hljs-string">        :type nums: List[int]</span><br><span class="hljs-string">        :type target: int</span><br><span class="hljs-string">        :rtype: List[int]</span><br><span class="hljs-string">        &quot;&quot;&quot;</span><br>        dicts = &#123;&#125;<br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(nums)):<br>            tmp = target - nums[i]<br>            <span class="hljs-keyword">if</span> tmp <span class="hljs-keyword">in</span> dicts.keys():<br>                <span class="hljs-keyword">return</span> [dicts[tmp], i]<br>            <span class="hljs-keyword">else</span>:<br>                dicts[nums[i]] = i<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>Python</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>夏令营-信工所</title>
+    <link href="/cc/2023/07/15/%E5%A4%8F%E4%BB%A4%E8%90%A5-%E4%BF%A1%E5%B7%A5%E6%89%80/"/>
+    <url>/cc/2023/07/15/%E5%A4%8F%E4%BB%A4%E8%90%A5-%E4%BF%A1%E5%B7%A5%E6%89%80/</url>
+    
+    <content type="html"><![CDATA[<h1 id="6月"><a href="#6月" class="headerlink" title="6月"></a>6月</h1><p>线上报名，虽然通知说，确定入营后再准备材料，但是7月初才开营，材料包括政审表之类需要学院签字、盖章的材料，所以提前准备了。</p><h1 id="7月"><a href="#7月" class="headerlink" title="7月"></a>7月</h1><h2 id="7月3日"><a href="#7月3日" class="headerlink" title="7月3日"></a>7月3日</h2><p>收到入营短信，入营。</p><p>该准备的材料继续准备，还做了一个心理测试。</p><h2 id="7月5日"><a href="#7月5日" class="headerlink" title="7月5日"></a>7月5日</h2><p>开营，讲座。</p><h2 id="7月6日"><a href="#7月6日" class="headerlink" title="7月6日"></a>7月6日</h2><p>各所介绍，并且线上报名科室。</p><p>差不多听完六个科室的介绍，临时决定报六室，紧急给一个老师发邮件。</p><p>报名了六室。</p><p>收到了老师的电话，和老师稍微聊了聊。挂了之后加上了微信，老师发来群组老师们的主页，让我了解了解；另外让我多准备自己简历上写的内容，多刷些题。</p><h2 id="7月7日"><a href="#7月7日" class="headerlink" title="7月7日"></a>7月7日</h2><p>收到邮件，通过了六室的材料初筛。</p><p>开始准备材料，准备自我介绍ppt、英文自我介绍、刷机试的题目。</p><h2 id="7月11日"><a href="#7月11日" class="headerlink" title="7月11日"></a>7月11日</h2><p>上午英面，面得还行，背了三分钟自我介绍，要求两分钟，边背边删一些，时间差不多。</p><blockquote><p>Q1：你的家乡是哪里？请介绍一下。</p><p>A：这个问题我准备过，叭叭说了一些。</p><p>Q2：你最喜欢得课程是什么？你想以之为将来得研究方向吗？</p><p>A：对于我而言没啥好思考的，叭叭一顿说。</p></blockquote><p>下午机试，抽到三道题都是前几天练过的，kuku写完了。</p><p>过了些会儿，老师微信问我保研比例如何，我说了个大概的数字。</p><h2 id="7月13日"><a href="#7月13日" class="headerlink" title="7月13日"></a>7月13日</h2><p>下午综面，对着ppt讲了五分钟自我介绍，胡乱准备了专业课，结果老师上来就开始问项目，三个问了俩，问完接着问保研比例，问我能不能绩点保研，那必须说能啊，我又说第六学期绩点比较好，现在相比于前五学期，总绩点上升不少，名次可能会升，老师问了一下那现在大概能什么排名，我就说我知道的前五学期这个总绩点的大概多少名，就结束综面了。</p><h2 id="7月15日"><a href="#7月15日" class="headerlink" title="7月15日"></a>7月15日</h2><p>老师问我会不会放鸽子，我说没打算报太多学校，现在挺想去信工所的。</p><p>然后老师开会去了，过了一小时让我暑假多刷leetcode</p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>批量操作</title>
     <link href="/cc/2023/06/10/%E6%89%B9%E9%87%8F%E6%93%8D%E4%BD%9C/"/>
     <url>/cc/2023/06/10/%E6%89%B9%E9%87%8F%E6%93%8D%E4%BD%9C/</url>
